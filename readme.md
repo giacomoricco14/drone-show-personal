@@ -41,6 +41,8 @@ bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_sq
 Compile the ROS2 workspace:
 ```bash
 cd crazyswarm2_ws
+pip3 install setuptools==65.5.1
+rm -rf build/ install/ log/
 colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 source install/setup.bash
 ```
