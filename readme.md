@@ -54,42 +54,9 @@ colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 source install/setup.bash
 ```
 
-## 🏁 5. Configure & Launch
-
-### 📝 Configuration
-File: `crazyswarm2_ws/src/crazyswarm2/crazyflie/config/crazyflies.yaml`
-- `enabled: true` 👉 Active agents in simulator (e.g., `cf_1`, `cf_2`)
-- `enabled: false` 👉 Unused agents
-
-### 🟢 Launch Services
-Start the server using the default C++ backend:
-
-```bash
-ros2 launch crazyflie launch.py backend:=cpp
-```
-
 ---
 
-## 🕹️ 6. Run a node to make your drone fly
-
-Let's assume you have used a single drone by considering the `sitl_singleagent.sh` and a `crazyflies.yaml` where only one drone is active, you can decide to make your drone fly with the python files in the `crazyflie_examples` folder.
-You can open another terminal and run the following command: 
-
-```bash
-ros2 run crazyflie_examples hello_world
-```
-
-This file will simply make your nanoquadcopter take off and land.
-
-Similarly, with a multiple drones configuration you can start the flight of the first drone with the same command or use the following to make them all take off:
-
-```bash
-ros2 run crazyflie_examples nice_hover
-```
-
----
-
-## 💻 7. Cfclient Interface
+## 💻 5. Cfclient Interface
 
 Another way to start your drones is by using the user interface.
 This is a simple way to connect and start your drones both in simulation and reality.
@@ -108,7 +75,21 @@ cfclient
 
 ---
 
-## 🎮 8. Simulation with Gazebo
+## 🏁 6. Configure & Launch
+
+### 📝 Configuration
+
+File: `crazyswarm2_ws/src/crazyswarm2/crazyflie/config/crazyflies.yaml`
+- `enabled: true` 👉 Active agents in the experiment (e.g., `cf_1`, `cf_2`)
+- `enabled: false` 👉 Unused agents
+
+File: `crazyswarm2_ws/src/crazyswarm2/crazyflie/config/crazyflies_sim.yaml`
+- `enabled: true` 👉 Active agents in the simulation (e.g., `cf_1`, `cf_2`)
+- `enabled: false` 👉 Unused agents
+
+---
+
+## 🎮 7. Simulation with Gazebo
 
 We will make extensive use of simulation. 
 We need to run the virtual firmware in Gazebo and connect to it using the ROS 2 server.
@@ -131,9 +112,16 @@ ros2 launch crazyflie launch.py backend:=cpp crazyflies_yaml_file:=crazyflies_si
 ros2 run crazyflie_examples hello_world
 ```
 
+This file will simply make your nanoquadcopter take off and land.
+Similarly, with a multiple drones configuration you can start the flight of the first drone with the same command or use the following to make them all take off:
+
+```bash
+ros2 run crazyflie_examples nice_hover
+```
+
 ---
 
-## 🌍 9. Real Experiment
+## 🌍 8. Real Experiment
 
 Now we will make use of the configuration file which is named `crazyflies.yaml`.
 Give a look at this file to make sure that everything is at right place. In particular make sure that:
